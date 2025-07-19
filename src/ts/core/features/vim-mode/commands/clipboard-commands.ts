@@ -50,7 +50,7 @@ export const ClipboardCommands = [
     nmap('p', 'Paste', paste),
     nmap('shift+p', 'Paste Before', pasteBefore),
     nvmap('y', 'Copy', copySelectedBlock),
-    nvmap('alt+y', 'Copy Block Reference', copySelectedBlockReference),
+    nvmap('c', 'Copy Block Reference', copySelectedBlockReference),
     nvmap('shift+y', 'Copy Block Embed', copySelectedBlockEmbed),
     // mapping 'd d' and 'd' conflict with each other.
     // replicate the behavior of `d d` by entering visual, and then cutting
