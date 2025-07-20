@@ -17,5 +17,5 @@ export const PanelCommands = [
     // Need to wrap in function to preserve the `this` reference inside of RoamPanel
     nmap('h', 'Select Panel Left', () => VimRoamPanel.previousPanel().select()),
     nmap('l', 'Select Panel Right', () => VimRoamPanel.nextPanel().select()),
-    map('ctrl+w', 'Close Page in Side Bar', closeSidebarPage),
+    map('w', 'Close Page in Side Bar', closeSidebarPage),
 ]
