@@ -1,4 +1,4 @@
-import {map, nmap} from 'src/core/features/vim-mode/vim'
+import {nmap} from 'src/core/features/vim-mode/vim'
 import {Selectors} from 'src/core/roam/selectors'
 import {Mouse} from 'src/core/common/mouse'
 import {VimRoamPanel} from 'src/core/features/vim-mode/roam/roam-vim-panel'
@@ -17,5 +17,5 @@ export const PanelCommands = [
     // Need to wrap in function to preserve the `this` reference inside of RoamPanel
     nmap('h', 'Select Panel Left', () => VimRoamPanel.previousPanel().select()),
     nmap('l', 'Select Panel Right', () => VimRoamPanel.nextPanel().select()),
-    map('w', 'Close Page in Side Bar', closeSidebarPage),
+    nmap('w', 'Close Page in Side Bar', closeSidebarPage),
 ]
