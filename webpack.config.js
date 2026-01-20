@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
@@ -13,6 +14,7 @@ const contentScriptsPath = path.join(sourceRootPath, 'ts', 'contentScripts')
 const distRootPath = path.join(__dirname, 'dist')
 const nodeEnv = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
 const webBrowser = process.env.WEB_BROWSER ? process.env.WEB_BROWSER : 'chrome'
+const isProduction = nodeEnv === 'production'
 
 const contentScripts = locateContentScripts(contentScriptsPath)
 
@@ -69,6 +71,14 @@ module.exports = {
     },
     module: {
         rules: [{test: /\.(js|ts|tsx)?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/}],
+    },
+    optimization: {
+        minimize: isProduction,
+        minimizer: [
+            new TerserPlugin({
+                cache: false,
+            }),
+        ],
     },
     plugins: [
         new CheckerPlugin(),
